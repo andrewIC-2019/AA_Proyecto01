@@ -38,6 +38,16 @@ public class MazoGeneral {
             
             limite++;
         }
+        for (int i = 0; i < listaMasos.size(); i++) {
+            MazoCartas get = listaMasos.get(i);
+            for(int j = 0; i<get.getCartas().size(); j++){
+                Carta get2 = get.getCartas().get(j);
+                if(get2.isCorrecto() && !get2.isSolucion()){
+                get2.setCorrecto(false);
+                return get2;
+                }
+            }
+        }
         return null;
     }
     public void SelecSolucion(){
@@ -127,7 +137,7 @@ public class MazoGeneral {
             str+= get.get(1).toString() + "\n";
         }
         
-        str += "Solución \n";
+        str += "\nSolución \n";
         
         
         for (int i = 0; i < solucion.size(); i++) {
