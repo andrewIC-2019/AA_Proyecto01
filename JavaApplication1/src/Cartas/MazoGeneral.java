@@ -15,39 +15,48 @@ public class MazoGeneral {
     ArrayList<MazoCartas> listaMasos;
     ArrayList<Carta> solucion;
     ArrayList<ArrayList<Carta>> listaRestricciones;
-    int cantRestricciones;
+    int canIncorrectas;
 
     public MazoGeneral() {
-        this.cantRestricciones = cantRestricciones;
+        this.canIncorrectas = 0;
         listaMasos = new ArrayList<MazoCartas>();
         solucion = new ArrayList<Carta>();
         listaRestricciones = new ArrayList<ArrayList<Carta>>();
     }    
     
     public Carta MarcarCartaIncorrecta(){
+        if(canIncorrectas==31)
+            return null;
         int limite = 0;
         int random;
         Carta carta; 
+        if(canIncorrectas>=25){
+            int maxI =listaMasos.size();
+            for (int i = 0; i < maxI; i++) {
+            MazoCartas get = listaMasos.get(i);
+            int maxJ =get.getCartas().size();
+            for(int j = 0; j<maxJ; j++){
+                Carta get2 = get.getCartas().get(j);
+                if(get2.isCorrecto() && !get2.isSolucion()){
+                    get2.setCorrecto(false);
+                    canIncorrectas++;
+                    return get2;
+                }
+            }
+        }
+        }
         while(limite <= 1000){
-            random = (int) (Math.random() * listaMasos.size()-1);
+            random = (int) (Math.random() * listaMasos.size());
             carta = listaMasos.get(random).SelecCartaRandom();
             if(carta.isCorrecto() && !carta.isSolucion()){
                 carta.setCorrecto(false);
+                canIncorrectas++;    
                 return carta;
             }
             
             limite++;
         }
-        for (int i = 0; i < listaMasos.size(); i++) {
-            MazoCartas get = listaMasos.get(i);
-            for(int j = 0; i<get.getCartas().size(); j++){
-                Carta get2 = get.getCartas().get(j);
-                if(get2.isCorrecto() && !get2.isSolucion()){
-                get2.setCorrecto(false);
-                return get2;
-                }
-            }
-        }
+        
         return null;
     }
     public void SelecSolucion(){
@@ -59,13 +68,13 @@ public class MazoGeneral {
         }
     
     }
-    public void SelecRestriccion(int cantRestricciones){
+    public void SelecRestriccion(int canRestricciones){
         Carta carta1; 
         Carta carta2; 
         int random1;
         int random2;
         ArrayList<Carta> temp;
-        for (int i = 0; i < cantRestricciones; i++) {
+        for (int i = 0; i < canRestricciones; i++) {
             random1=(int) (Math.random() * listaMasos.size()-1);
             random2=(int) (Math.random() * listaMasos.size()-1);
             while(random1 == random2){
@@ -110,12 +119,12 @@ public class MazoGeneral {
         this.listaRestricciones = listaRestricciones;
     }
 
-    public int getCantRestricciones() {
-        return cantRestricciones;
+    public int getcanIncorrectas() {
+        return canIncorrectas;
     }
 
-    public void setCantRestricciones(int cantRestricciones) {
-        this.cantRestricciones = cantRestricciones;
+    public void setcanIncorrectas(int canIncorrectas) {
+        this.canIncorrectas = canIncorrectas;
     }
 
     @Override

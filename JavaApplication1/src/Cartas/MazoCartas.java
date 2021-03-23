@@ -25,7 +25,7 @@ public class MazoCartas {
     }
     public Carta SelecCartaRandom(){
         int random;
-        random = (int) (Math.random() * cartas.size()-1);
+        random = (int) (Math.random() * cartas.size());
         
         return cartas.get(random);
     }

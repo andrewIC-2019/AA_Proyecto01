@@ -21,9 +21,12 @@ public class Algoritmo {
         listaSoluciones = new ArrayList<>();
     }
     
-    public boolean FuerzaBruta(){ 
+    public long FuerzaBruta(){ 
         
-        System.out.println(mazo.getSolucion());
+        
+        for (int i = 0; i < 5; i++) {
+            System.out.println(mazo.getSolucion().get(i));
+        }
         ArrayList<Carta> posibleSolucion;
         ArrayList<Carta> solucion = mazo.getSolucion();
         int sospechoso;
@@ -46,6 +49,8 @@ public class Algoritmo {
         ArrayList<Carta> mazoParteCuerpo = mazo.getListaMasos().get(3).getCartas();
         ArrayList<Carta> mazoLugar = mazo.getListaMasos().get(4).getCartas();
         
+        long tiempoInicio = System.nanoTime();
+        long tiempoFinal = 0;
         for (sospechoso = 0; sospechoso < mazoSospechoso.size(); sospechoso++) {
             
             Carta getSospechoso = mazoSospechoso.get(sospechoso);
@@ -86,8 +91,10 @@ public class Algoritmo {
                                 getLugar = mazoLugar.get(lugar);                
                             }
                             posibleSolucion.set(4,getLugar);
-                            if(posibleSolucion.equals(solucion))
-                                return true;
+                            if(posibleSolucion.equals(solucion)){
+                                tiempoFinal = System.nanoTime();
+                                return tiempoFinal-tiempoInicio;
+                            }
                             else
                                 mazo.MarcarCartaIncorrecta();
                                 
@@ -97,7 +104,7 @@ public class Algoritmo {
                 }
             }
         }
-        return false;
+        return -1;
     }
     
 }
