@@ -106,5 +106,10 @@ public class Algoritmo {
         }
         return -1;
     }
+
+    public ArrayList<ArrayList<Carta>> getListaSoluciones() {
+        return listaSoluciones;
+    }
+    
     
 }
