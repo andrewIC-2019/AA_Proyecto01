@@ -5,6 +5,14 @@
  */
 package javaapplication1;
 
+
+import AlgortimoFuerzaBruta.Algoritmo;
+import Cartas.Carta;
+import static Cartas.CrearMazo.CrearMazo;
+import Cartas.MazoGeneral;
+import static Cartas.Tipo.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author bryan
@@ -16,7 +24,8 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hola2");
+        MazoGeneral mazo = CrearMazo(0);
+        Algoritmo prueba = new Algoritmo(mazo);
+        System.out.println((prueba.FuerzaBruta()));
     }
-    
 }
