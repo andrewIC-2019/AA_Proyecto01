@@ -26,6 +26,11 @@ public class Pruebas {
         // TODO code application logic here
         MazoGeneral mazo = CrearMazo(0);
         Algoritmo prueba = new Algoritmo(mazo);
-        System.out.println((prueba.FuerzaBruta()));
+        prueba.FuerzaBruta();
+        for (int i = 0; i < prueba.getListaSoluciones().size(); i++) {
+            System.out.println(prueba.getListaSoluciones().get(i));
+            
+        }
+        
     }
 }

@@ -95,8 +95,10 @@ public class Algoritmo {
                                 tiempoFinal = System.nanoTime();
                                 return tiempoFinal-tiempoInicio;
                             }
-                            else
+                            else{
                                 mazo.MarcarCartaIncorrecta();
+                                listaSoluciones.add(posibleSolucion);
+                            }
                                 
                             
                         }
