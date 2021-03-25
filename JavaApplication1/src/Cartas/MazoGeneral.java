@@ -30,25 +30,11 @@ public class MazoGeneral {
         int limite = 0;
         int random;
         Carta carta; 
-        if(canIncorrectas>=25){
-            int maxI =listaMasos.size();
-            for (int i = 0; i < maxI; i++) {
-            MazoCartas get = listaMasos.get(i);
-            int maxJ =get.getCartas().size();
-            for(int j = 0; j<maxJ; j++){
-                Carta get2 = get.getCartas().get(j);
-                if(get2.isCorrecto() && !get2.isSolucion()){
-                    get2.setCorrecto(false);
-                    canIncorrectas++;
-                    return get2;
-                }
-            }
-        }
-        }
+        
         while(limite <= 1000){
             random = (int) (Math.random() * listaMasos.size());
             carta = listaMasos.get(random).SelecCartaRandom();
-            if(carta.isCorrecto() && !carta.isSolucion()){
+            if(!carta.isSolucion()){
                 carta.setCorrecto(false);
                 canIncorrectas++;    
                 return carta;
