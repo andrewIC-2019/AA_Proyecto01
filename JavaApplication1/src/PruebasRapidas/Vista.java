@@ -5,6 +5,9 @@
  */
 package PruebasRapidas;
 
+import AlgortimoFuerzaBruta.Algoritmo;
+import static Cartas.CrearMazo.CrearMazo;
+import Cartas.MazoGeneral;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -23,9 +26,9 @@ public class Vista extends javax.swing.JFrame {
         //  Posicionar ventana en el centro
         this.setLocationRelativeTo(null);
         //  Colocar Imagen en la aplicacion
-        //ImageIcon imagen = new ImageIcon(getClass().getResource("PruebasRapidas\\Imagen\\Pro1.png"));
-        //Icon logo = new ImageIcon(imagen.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
-        //lblImagen.setIcon(logo);
+        ImageIcon imagen = new ImageIcon(getClass().getResource("\\Imagen\\Pro1.png"));    //Direccion: "\\Imagen\\Pro1.png"
+        Icon logo = new ImageIcon(imagen.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
+        lblImagen.setIcon(logo);
     }
 
     /**
@@ -97,10 +100,10 @@ public class Vista extends javax.swing.JFrame {
         jScrollPane2.setViewportView(taBackTracking);
 
         lblTiempoBT.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        lblTiempoBT.setText("Tiempo en segundos:");
+        lblTiempoBT.setText("Tiempo en nanosegundos:");
 
         lblTiempoFB.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        lblTiempoFB.setText("Tiempo en segundos:");
+        lblTiempoFB.setText("Tiempo en nanosegundos:");
 
         txtTiempoBT.setEditable(false);
         txtTiempoBT.setBackground(new java.awt.Color(0, 0, 0));
@@ -197,22 +200,22 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlPanelLayout.createSequentialGroup()
                         .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPanelLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(lblTiempoBT)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTiempoBT, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblBT, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlPanelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblTiempoBT)
+                                .addGap(47, 47, 47)
+                                .addComponent(txtTiempoBT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(36, 36, 36)
                         .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFB, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlPanelLayout.createSequentialGroup()
-                                .addGap(54, 54, 54)
+                                .addGap(10, 10, 10)
                                 .addComponent(lblTiempoFB)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTiempoFB, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(50, 50, 50)
+                                .addComponent(txtTiempoFB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFB, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPanelLayout.setVerticalGroup(
@@ -246,18 +249,18 @@ public class Vista extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtFB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblBT)))
+                    .addComponent(lblBT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTiempoBT)
-                    .addComponent(txtTiempoBT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTiempoFB)
-                    .addComponent(txtTiempoFB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTiempoBT)
+                        .addComponent(txtTiempoBT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTiempoFB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTiempoFB))
                 .addContainerGap())
         );
 
@@ -265,7 +268,7 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+            .addComponent(pnlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 824, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,31 +281,38 @@ public class Vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
-        //Obtiene el numero de restricciones
-        //Integer num = (Integer)spnRestricciones.getValue();
-        Controlador.getNumRestricciones(spnRestricciones.getValue().toString());
-        //Setea la solucion
-        //txtSolucion.setText("Jardinera + amor + tubo + cabeza + sala");
-        txtSolucion.setText(Controlador.getTexto('s'));
-        //Setea las restricciones
-        //taRestricciones.setText("Novia + pistola\nVecino + Cuchillo");
-        taRestricciones.setText(Controlador.getTexto('r'));
-        //Setea los resultados del backtracking
-        //taBackTracking.setText("Resultado de Backtracking");
-        taBackTracking.setText(Controlador.getTexto('b'));
-        //Setea los resultados del de Fuerza Bruta
-//        taFuerzaBruta.setText(""
-//                + "Resultado de Fuerza Bruta\n"
-//                + "Resultado de Fuerza Bruta\n"
-//                + "Resultado de Fuerza Bruta\n"
-//                + "Resultado de Fuerza Bruta\n");
-        taFuerzaBruta.setText(Controlador.getTexto('f'));
-        //Setea el tiempo del backtracking
-        //txtTiempoBT.setText("578");
-        txtTiempoBT.setText(Controlador.getTexto('x'));
-        //Setea el tiempo del Fuerza Bruta
-        //txtTiempoFB.setText("926");
-        txtTiempoFB.setText(Controlador.getTexto('y'));
+        
+        //Llama y recibe datos del controlador
+        String Ui = Controlador.iniciarJuego(spnRestricciones.getValue().toString());
+        String[] UiParts = Ui.split(";");
+        txtSolucion.setText(UiParts[0]);
+        taRestricciones.setText(UiParts[1]);
+        taFuerzaBruta.setText(UiParts[2]);
+        txtTiempoFB.setText(UiParts[3]);
+
+        
+        //Coloca los datos directamente (SIN CONTROLADOR DE POR MEDIO)
+        //en caso que los datos no salgan completos, usar este codigo:
+//        MazoGeneral mazo = CrearMazo((Integer)spnRestricciones.getValue());     // Recibe el numero de restricciones. Se llevaría a cabo al presionar el boton JUGAR
+//        Algoritmo prueba = new Algoritmo(mazo);                                 // Crea la clase que contiene el algoritmo. Recibe el mazo que debe trabajar
+//        
+//        String retrnFb = prueba.FuerzaBruta();      // Llama al de fuerza bruta
+//        String[] retrnFbArray = retrnFb.split(";"); // Separar el dato del output y tiempo
+//        String salidaFb = retrnFbArray[0];          // Output
+//        String tiempoFb = retrnFbArray[1];          // Tiempo
+//        taFuerzaBruta.setText(salidaFb);
+//        txtTiempoFB.setText(tiempoFb);
+//        
+//        String strSolucion =                        //Esto obtiene la solucion
+//                "Fue "+mazo.getSolucion().get(0)+
+//                "con "+mazo.getSolucion().get(1)+
+//                "por "+mazo.getSolucion().get(2)+
+//                "en "+mazo.getSolucion().get(3)+
+//                "dentro de "+mazo.getSolucion().get(4);
+//        txtSolucion.setText(strSolucion);
+//        
+//        taRestricciones.setText(mazo.salidaRestricciones());
+
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void txtSolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSolucionActionPerformed

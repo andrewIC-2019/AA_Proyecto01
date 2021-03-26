@@ -21,12 +21,12 @@ public class Algoritmo {
         listaSoluciones = new ArrayList<>();
     }
     
-    public long FuerzaBruta(){ 
+    public String FuerzaBruta(){                                      // Retorna un string con la info de la corrida. Antes era long: Retorna el tiempo tardado
         
         
-        for (int i = 0; i < 5; i++) {
-            System.out.println(mazo.getSolucion().get(i));
-        }
+//        for (int i = 0; i < 5; i++) {                               // Mostrar solucion
+//            System.out.println(mazo.getSolucion().get(i));
+//        }
         ArrayList<Carta> posibleSolucion;
         ArrayList<Carta> solucion = mazo.getSolucion();
         int sospechoso;
@@ -34,6 +34,8 @@ public class Algoritmo {
         int motivo;
         int parteCuerpo;
         int lugar;
+        String salida = "";                      // Almacena el texto que se mostrara al usuario
+        String tiempoFb;                        // Para retornar el tiempo junto a la salida
         
         Carta temp = new Carta("Temporal", Tipo.Arma);
         posibleSolucion= new ArrayList<>();
@@ -90,10 +92,14 @@ public class Algoritmo {
                                 lugar++;
                                 getLugar = mazoLugar.get(lugar);                
                             }
-                            posibleSolucion.set(4,getLugar);
+                            posibleSolucion.set(4,getLugar); 
+                            salida += posibleSolucion.toString()+"\n";               //Para mostrar en la interfaz
                             if(posibleSolucion.equals(solucion)){
-                                tiempoFinal = System.nanoTime();
-                                return tiempoFinal-tiempoInicio;
+                                tiempoFinal = System.nanoTime();                
+                                tiempoFb = String.valueOf(tiempoFinal-tiempoInicio); //Convierte el tiempo a string para poder hacer un solo return
+                                salida += ";"+tiempoFb;                              //Para este punto, ya tenemos toda la salida
+                                return salida;
+                                //return tiempoFinal-tiempoInicio;                   //Antiguo return long
                             }
                             else{
                                 mazo.MarcarCartaIncorrecta();
@@ -106,7 +112,9 @@ public class Algoritmo {
                 }
             }
         }
-        return -1;
+        salida = ";-";
+        return salida;
+        //return -1;
     }
 
     public ArrayList<ArrayList<Carta>> getListaSoluciones() {

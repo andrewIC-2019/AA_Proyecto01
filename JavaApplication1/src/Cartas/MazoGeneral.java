@@ -142,5 +142,17 @@ public class MazoGeneral {
         return str;
     }
     
+    public String salidaRestricciones(){            //Obtiene y Formatea el texto de las restricciones
+        String strRestric = "";
+        for (int i = 0; i < listaRestricciones.size(); i++) {
+            ArrayList<Carta> get = listaRestricciones.get(i);
+            
+            strRestric+= "Restriccion #"+(i+1)+": "
+                        + get.get(0).toString() + "- "
+                        + get.get(1).toString()+"\n";
+        }
+        return strRestric;
+    }
+    
     
 }

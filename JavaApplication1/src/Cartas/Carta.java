@@ -56,7 +56,8 @@ public class Carta {
 
     @Override
     public String toString() {
-        return "Carta: "  + nombre + ", tipo: " + tipo + ", posible solucion: " + correcto + ", parte de la solucion: " + solucion;
+        return nombre + " ";            // Cambio en el return, ahora Solo muestra el nombre
+        //return "Carta: "  + nombre + ", tipo: " + tipo + ", posible solucion: " + correcto + ", parte de la solucion: " + solucion;
     }
     
     

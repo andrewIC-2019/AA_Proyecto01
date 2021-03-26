@@ -1,38 +1,41 @@
 
 package PruebasRapidas;
 
+import AlgortimoFuerzaBruta.Algoritmo;
+import static Cartas.CrearMazo.CrearMazo;
+import Cartas.MazoGeneral;
+
 public class Controlador {
+    private static int numRes;
+    private static MazoGeneral mazo;
+    private static Algoritmo prueba;    // Crea la clase que contiene el algoritmo. Recibe el mazo que debe trabajar
     
-    //Obtiene el numero de restricciones indicados en el JSpinner
-    public static void getNumRestricciones(String pNumRes){
-        int numRes= Integer.parseInt(pNumRes);
-        //Aca se llamaria a las funciones con ese determinado numero de restricciones
-        System.out.println("El numero de restricciones es: "+numRes);
-    }
-    
-    public static String getTexto(char cod){
-        switch(cod){
-            case 's':
-                //Para mostrar la solucion
-                return "Solución";
-            case 'r':
-                //Para mostrar las restricciones
-                return "Restricciones";
-            case 'b':
-                //Para mostrar el resultado del backtracking
-                return "Backtracking";
-            case 'f':
-                //Para mostrar el resultado del de fuerza bruta
-                return "Fuerza Bruta";
-            case 'x':
-                //Para mostrar el tiempo que tarda el backtracking
-                return "123";
-            case 'y':
-                //Para mostrar el tiempo que tarda el de fuerza bruta
-                return "456";
-            default:
-                //En caso de que ocurra algo inesperado
-                return "Un error ha ocurrido";
-        }
+    public static String iniciarJuego(String pNumRestri){
+        numRes= Integer.parseInt(pNumRestri);   //Obtiene el numero de restricciones indicados en el JSpinner
+        mazo = CrearMazo(numRes);               // Recibe el numero de restricciones. Se llevaría a cabo al presionar el boton JUGAR
+        prueba = new Algoritmo(mazo);     
+        
+        //Solucion
+        String strSolucion =                        //Esto obtiene la solucion
+                "Fue "+mazo.getSolucion().get(0)+
+                "con "+mazo.getSolucion().get(1)+
+                "por "+mazo.getSolucion().get(2)+
+                "en "+mazo.getSolucion().get(3)+
+                "dentro de "+mazo.getSolucion().get(4);
+        
+        //Restricciones
+        String lasRestricciones = mazo.salidaRestricciones();
+        
+        //Fuerza Bruta
+        
+        String theOutput = "";
+        String retrnFb = prueba.FuerzaBruta();      // Llama al de fuerza bruta
+        String[] retrnFbArray = retrnFb.split(";"); // Separar el dato del output y tiempo
+        String salidaFb = retrnFbArray[0];          // Output
+        String tiempoFb = retrnFbArray[1];          // Tiempo
+         
+        //Finalmente se retorna toda la info
+        theOutput = strSolucion+";"+lasRestricciones+";"+salidaFb+";"+tiempoFb;
+        return theOutput;
     }
 }
