@@ -28,11 +28,18 @@ public class Controlador {
         
         //Fuerza Bruta
         
-        String theOutput = "";
-        String retrnFb = prueba.FuerzaBruta();      // Llama al de fuerza bruta
+        String theOutput = "";                                      //Almacena la salida
+        String retrnFb = String.valueOf(prueba.FuerzaBruta());      // Llama al de fuerza bruta, retorna long y convierte
+        /**
         String[] retrnFbArray = retrnFb.split(";"); // Separar el dato del output y tiempo
         String salidaFb = retrnFbArray[0];          // Output
-        String tiempoFb = retrnFbArray[1];          // Tiempo
+        **/
+        String salidaFb = "";       //ahora las posibles soluciones las saca de ListaSoluciones
+        int ips;                    //iterador posible solucion
+        for (ips=0; ips<prueba.getListaSoluciones().size(); ips++){
+            salidaFb += prueba.getListaSoluciones().get(ips).toString()+"\n";
+        }
+        String tiempoFb = retrnFb;          // Tiempo FB (aignacion con el fin de mayor orden en los nombres)
          
         //Finalmente se retorna toda la info
         theOutput = strSolucion+";"+lasRestricciones+";"+salidaFb+";"+tiempoFb;
