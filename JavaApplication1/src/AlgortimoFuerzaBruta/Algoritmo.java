@@ -93,8 +93,10 @@ public class Algoritmo {
                                 getLugar = mazoLugar.get(lugar);                
                             }
                             posibleSolucion.set(4,getLugar); 
+                            listaSoluciones.add(posibleSolucion);
                             salida += posibleSolucion.toString()+"\n";               //Para mostrar en la interfaz
                             if(posibleSolucion.equals(solucion)){
+
                                 tiempoFinal = System.nanoTime();                
                                 tiempoFb = String.valueOf(tiempoFinal-tiempoInicio); //Convierte el tiempo a string para poder hacer un solo return
                                 salida += ";"+tiempoFb;                              //Para este punto, ya tenemos toda la salida
@@ -103,7 +105,6 @@ public class Algoritmo {
                             }
                             else{
                                 mazo.MarcarCartaIncorrecta();
-                                listaSoluciones.add(posibleSolucion);
                             }
                                 
                             
