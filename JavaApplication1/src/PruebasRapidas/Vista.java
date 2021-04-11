@@ -289,6 +289,8 @@ public class Vista extends javax.swing.JFrame {
         taRestricciones.setText(UiParts[1]);
         taFuerzaBruta.setText(UiParts[2]);
         txtTiempoFB.setText(UiParts[3]);
+        taBackTracking.setText(UiParts[4]);
+        txtTiempoBT.setText(UiParts[5]);
 
         
         //Coloca los datos directamente (SIN CONTROLADOR DE POR MEDIO)
