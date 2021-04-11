@@ -25,12 +25,15 @@ public class Pruebas {
     public static void main(String[] args) {
         MazoGeneral mazo = CrearMazo(1000);            // Recibe el numero de restricciones. Se llevaría a cabo al presionar el boton JUGAR
         Algoritmo prueba = new Algoritmo(mazo);     
-        
-        System.out.println(prueba.BacktrackingRecursivo());
 
-        MazoGeneral mazo2 = CrearMazo(0);
-        mazo2.setListaRestricciones(mazo.getListaRestricciones());
-        mazo2.setSolucion(mazo.getSolucion());
+        System.out.println(prueba.Backtracking());
+ 
+        MazoGeneral mazo2 = CrearMazo(0);            // Crea mazo 2   
+        mazo2.setListaRestricciones(mazo.getListaRestricciones());  // Setea las mismas restricciones del mazo1
+        mazo2.setSolucion(mazo.getSolucion());                      // Setea la misma solucion
+        Algoritmo prueba2 = new Algoritmo(mazo2);                   // Crea otra instancia de Algoritmo
+
+        System.out.println(prueba2.FuerzaBruta());        //Hago la llamada
         
         
     }

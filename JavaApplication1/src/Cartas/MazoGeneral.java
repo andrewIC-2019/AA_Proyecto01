@@ -93,9 +93,23 @@ public class MazoGeneral {
         return solucion;
     }
 
-    public void setSolucion(ArrayList<Carta> solucion) {
-        this.solucion = solucion;
+
+    
+public void setSolucion(ArrayList<Carta> solucion) {
+    for (int i = 0; i < listaMasos.size(); i++) {
+    ArrayList<Carta> temp = listaMasos.get(i).getCartas();
+    for (int j = 0; j < temp.size(); j++) {
+        Carta get = temp.get(j);
+        if(solucion.get(i).getNombre() == null ? get.getNombre() == null : solucion.get(i).getNombre().equals(get.getNombre())){
+            this.solucion.get(i).setSolucion(false);
+            get.setSolucion(true);
+            this.solucion.set(i, get);
+            
+        }
+        }
     }
+}
+
 
     public ArrayList<ArrayList<Carta>> getListaRestricciones() {
         return listaRestricciones;
