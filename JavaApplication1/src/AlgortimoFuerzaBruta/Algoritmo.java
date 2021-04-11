@@ -149,7 +149,7 @@ public class Algoritmo {
         for (sospechoso = 0; sospechoso < mazoSospechoso.size(); sospechoso++) {
             
             Carta getSospechoso = mazoSospechoso.get(sospechoso);
-            while(!getSospechoso.isCorrecto()&& sospechoso < mazoSospechoso.size()-1 && Poda(posibleSolucion)){
+            while(!getSospechoso.isCorrecto()&& sospechoso < mazoSospechoso.size()-1 || Poda(posibleSolucion)){
                 sospechoso++;
                 getSospechoso = mazoSospechoso.get(sospechoso);                
             }
@@ -157,7 +157,7 @@ public class Algoritmo {
             
             for (arma = 0; arma < mazoArma.size(); arma++){
                 Carta getArma = mazoArma.get(arma);
-                while(!getArma.isCorrecto()&& arma < mazoArma.size()-1 && Poda(posibleSolucion)){
+                while(!getArma.isCorrecto()&& arma < mazoArma.size()-1 || Poda(posibleSolucion)){
                     arma++;
                     getArma = mazoArma.get(arma);                
                 }
@@ -165,7 +165,7 @@ public class Algoritmo {
                 
                 for (motivo = 0; motivo < mazoMotivo.size(); motivo++){
                     Carta getMotivo = mazoMotivo.get(motivo);
-                    while(!getMotivo.isCorrecto()&& motivo < mazoMotivo.size()-1 && Poda(posibleSolucion)){
+                    while(!getMotivo.isCorrecto()&& motivo < mazoMotivo.size()-1 || Poda(posibleSolucion)){
                         motivo++;
                         getMotivo = mazoMotivo.get(motivo);                
                     }
@@ -173,7 +173,7 @@ public class Algoritmo {
                     
                     for (parteCuerpo = 0; parteCuerpo < mazoParteCuerpo.size(); parteCuerpo++){
                         Carta getParteCuerpo = mazoParteCuerpo.get(parteCuerpo);
-                        while(!getParteCuerpo.isCorrecto()&& parteCuerpo < mazoParteCuerpo.size()-1 && Poda(posibleSolucion)){
+                        while(!getParteCuerpo.isCorrecto()&& parteCuerpo < mazoParteCuerpo.size()-1 || Poda(posibleSolucion)){
                             parteCuerpo++;
                             getParteCuerpo = mazoParteCuerpo.get(parteCuerpo);                
                         }
@@ -181,7 +181,7 @@ public class Algoritmo {
                         
                         for (lugar = 0; lugar < mazoLugar.size(); lugar++){
                             Carta getLugar = mazoLugar.get(lugar);
-                            while(!getLugar.isCorrecto()&& lugar < mazoLugar.size()-1 && Poda(posibleSolucion)){
+                            while(!getLugar.isCorrecto()&& lugar < mazoLugar.size()-1 || Poda(posibleSolucion)){
                                 lugar++;
                                 getLugar = mazoLugar.get(lugar);                
                             }
@@ -217,10 +217,9 @@ public class Algoritmo {
         ArrayList<ArrayList<Carta>> listaRestricciones = mazo.getListaRestricciones();
         for (int i = 0; i < listaRestricciones.size(); i++) {
             ArrayList<Carta> get = listaRestricciones.get(i);
-            if(posibleSolucion.indexOf(get.get(0))==-1 || posibleSolucion.indexOf(get.get(1)) ==-1)
-                ;
-            else
+            if(posibleSolucion.indexOf(get.get(0))!=-1 && posibleSolucion.indexOf(get.get(1)) !=-1){
                 return true;
+            }   
         }
         return false;
     }
@@ -263,11 +262,16 @@ public class Algoritmo {
         ArrayList<Carta> mazoActual = mazos.get(i);
         for (int j = 0; j < mazoActual.size(); j++) {
             Carta get = mazoActual.get(j);
-            while(!get.isCorrecto()&& j < mazoActual.size()-1 && Poda(posibleSolucion)){
+            while(!get.isCorrecto() || Poda(posibleSolucion)){
                 j++;
+                if(j > mazoActual.size()-1){
+                    return -1;
+                }
                 get = mazoActual.get(j);                
             }
             posibleSolucion.set(i,get);
+             ArrayList<Carta> tempS = (ArrayList<Carta>) posibleSolucion.clone();
+            listaSoluciones.add(tempS);
             if(posibleSolucion.equals(solucion)){
 
                 long tiempoFinal = System.nanoTime();                

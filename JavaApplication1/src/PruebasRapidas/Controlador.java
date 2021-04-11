@@ -45,16 +45,18 @@ public class Controlador {
         for (ips=0; ips<prueba.getListaSoluciones().size(); ips++){
             salidaFb += prueba.getListaSoluciones().get(ips).toString()+"\n";
         }
+        salidaFb += String.valueOf(ips);
         String tiempoFb = retrnFb;          // Tiempo FB (aignacion con el fin de mayor orden en los nombres)
         
         
-        String retrnBt = String.valueOf(prueba2.Backtracking());
+        String retrnBt = String.valueOf(prueba2.BacktrackingRecursivo());
         
         String salidaBt = "";               // Soluciones que propuso el backtracking
         int ibt;
         for (ibt=0; ibt<prueba2.getListaSoluciones().size(); ibt++){
             salidaBt += prueba2.getListaSoluciones().get(ibt).toString()+"\n";
         }
+        salidaBt += String.valueOf(ibt);
         String tiempoBt = retrnBt;
         
         //Finalmente se retorna toda la info
