@@ -217,7 +217,7 @@ public class Algoritmo {
         ArrayList<ArrayList<Carta>> listaRestricciones = mazo.getListaRestricciones();
         for (int i = 0; i < listaRestricciones.size(); i++) {
             ArrayList<Carta> get = listaRestricciones.get(i);
-            if(posibleSolucion.indexOf(get.get(0))!=-1 && posibleSolucion.indexOf(get.get(1)) !=-1){
+            if(posibleSolucion.contains(get.get(0)) && posibleSolucion.contains(get.get(1))){
                 return true;
             }   
         }
