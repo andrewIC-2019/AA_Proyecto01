@@ -28,6 +28,9 @@ public class Pruebas {
         
         System.out.println(prueba.BacktrackingRecursivo());
 
+        MazoGeneral mazo2 = CrearMazo(0);
+        mazo2.setListaRestricciones(mazo.getListaRestricciones());
+        mazo2.setSolucion(mazo.getSolucion());
         
         
     }
