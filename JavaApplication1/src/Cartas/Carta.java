@@ -5,6 +5,8 @@
  */
 package Cartas;
 
+import java.util.Objects;
+
 /**
  *
  * @author bryand
@@ -58,6 +60,35 @@ public class Carta {
     public String toString() {
         return nombre + " ";            // Cambio en el return, ahora Solo muestra el nombre
         //return "Carta: "  + nombre + ", tipo: " + tipo + ", posible solucion: " + correcto + ", parte de la solucion: " + solucion;
+    }
+
+    @Override
+    public int hashCode() {             //Siempre que se aplica un override al equals, se recomienda hacerlo al hash
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.nombre);
+        hash = 13 * hash + Objects.hashCode(this.tipo);
+        return hash;
+    }
+
+    @Override                           //Sobre-escribe al equals, para esta clase
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Carta other = (Carta) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (this.tipo != other.tipo) {
+            return false;
+        }
+        return true;
     }
     
     

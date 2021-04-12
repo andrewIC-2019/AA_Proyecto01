@@ -53,10 +53,10 @@ public class Controlador {
         
         String salidaBt = "";               // Soluciones que propuso el backtracking
         int ibt;
-        for (ibt=0; ibt<prueba2.getListaSoluciones().size(); ibt++){
+        for (ibt=4; ibt<prueba2.getListaSoluciones().size(); ibt++){            //las 4 primeras tienen un Temporal
             salidaBt += prueba2.getListaSoluciones().get(ibt).toString()+"\n";
         }
-        salidaBt += String.valueOf(ibt);
+        salidaBt += String.valueOf(ibt-4);                                      //le quito los 4 del temporal
         String tiempoBt = retrnBt;
         
         //Finalmente se retorna toda la info

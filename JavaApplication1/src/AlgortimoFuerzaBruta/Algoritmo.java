@@ -217,8 +217,10 @@ public class Algoritmo {
         ArrayList<ArrayList<Carta>> listaRestricciones = mazo.getListaRestricciones();
         for (int i = 0; i < listaRestricciones.size(); i++) {
             ArrayList<Carta> get = listaRestricciones.get(i);
-            if(posibleSolucion.contains(get.get(0)) && posibleSolucion.contains(get.get(1))){
-                return true;
+            if(posibleSolucion.indexOf(get.get(0))!=-1 && posibleSolucion.indexOf(get.get(1))!=-1){     //Obtiene los indices
+                System.out.println(posibleSolucion.toString());                                         //Significa que tiene una restriccion
+                System.out.println(get.get(0)+" "+get.get(1));
+                return true;                                                                            //Retorna indicando que si hay restriccion
             }   
         }
         return false;
