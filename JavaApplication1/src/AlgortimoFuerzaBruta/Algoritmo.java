@@ -157,7 +157,8 @@ public class Algoritmo {
         ArrayList<ArrayList<Carta>> listaRestricciones = mazo.getListaRestricciones();
         for (int i = 0; i < listaRestricciones.size(); i++) {
             ArrayList<Carta> get = listaRestricciones.get(i);
-            if(Comparador(get.get(0), posibleSolucion) && Comparador(get.get(1), posibleSolucion)){
+            if(posibleSolucion.indexOf(get.get(0)) != -1 && posibleSolucion.indexOf(get.get(1)) != -1){
+                System.out.println(posibleSolucion + " " + get);
                 return true;                                                                            //Retorna indicando que si hay restriccion
             }   
         }
@@ -231,12 +232,12 @@ public class Algoritmo {
     
     private long auxiliarB(ArrayList<Carta> posibleSolucion, ArrayList<ArrayList<Carta>> mazos, int i
             ,ArrayList<Carta> solucion){
-        
+        Carta get;
         ArrayList<Carta> mazoActual = mazos.get(i);
         for (int j = 0; j < mazoActual.size(); j++) {
-            Carta get = mazoActual.get(j);
+            get = mazoActual.get(j);
             posibleSolucion.set(i,get);
-            while((!get.isCorrecto() || Poda(posibleSolucion)  ) && j < mazoActual.size()-1){
+            while(j < mazoActual.size()-1 && (!get.isCorrecto() | Poda(posibleSolucion)))   {
                 j++;
                 get = mazoActual.get(j);                
                 posibleSolucion.set(i,get);             
@@ -259,6 +260,8 @@ public class Algoritmo {
                 
             }
         }
+        get = mazoActual.get(0);
+        posibleSolucion.set(i,get);
         return -1;
     }
     
