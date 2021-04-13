@@ -66,7 +66,6 @@ public class Algoritmo {
         for (int i = 0; i < listaRestricciones.size(); i++) {
             ArrayList<Carta> get = listaRestricciones.get(i);
             if(posibleSolucion.indexOf(get.get(0)) != -1 && posibleSolucion.indexOf(get.get(1)) != -1){
-                System.out.println(posibleSolucion + " " + get);
                 return true;                                                                            //Retorna indicando que si hay restriccion
             }   
         }
