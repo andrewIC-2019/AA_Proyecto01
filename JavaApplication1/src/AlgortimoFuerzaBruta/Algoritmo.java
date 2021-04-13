@@ -144,7 +144,7 @@ public class Algoritmo {
         for (int j = 0; j < mazoActual.size(); j++) {
             get = mazoActual.get(j);
             posibleSolucion.set(i,get);
-            while(j < mazoActual.size()-1 && (!get.isCorrecto() || Poda(posibleSolucion)))   {
+            while(!get.isSolucion() && j < mazoActual.size()-1 && (!get.isCorrecto() || Poda(posibleSolucion)))   {
                 j++;
                 get = mazoActual.get(j);                
                 posibleSolucion.set(i,get);             
