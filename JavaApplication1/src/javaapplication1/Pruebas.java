@@ -39,7 +39,7 @@ public class Pruebas {
         mazo2.setSolucion(mazo.getSolucion());                      // Setea la misma solucion
         Algoritmo prueba2 = new Algoritmo(mazo2);                   // Crea otra instancia de Algoritmo
 
-        System.out.println(prueba2.Backtracking());        //Hago la llamada
+        System.out.println(prueba2.BacktrackingRecursivo());        //Hago la llamada
         int i2;                    //iterador posible solucion
         for (i2=0; i2<prueba2.getListaSoluciones().size(); i2++){
             System.out.println(prueba2.getListaSoluciones().get(i2).toString());
