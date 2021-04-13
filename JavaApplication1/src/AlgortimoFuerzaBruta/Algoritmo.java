@@ -125,7 +125,7 @@ public class Algoritmo {
             }
             else{
                 mazo.MarcarCartaIncorrecta();
-                if(i<4){                    
+                if(i<mazos.size()-1){                    
                     long tiempo = auxiliar(posibleSolucion,mazos,i+1,solucion);  
                     if (tiempo != -1) {
                         return tiempo;                        
@@ -158,7 +158,7 @@ public class Algoritmo {
             }
             else{
                 mazo.MarcarCartaIncorrecta();
-                if(i<4){                    
+                if(i<mazos.size()-1){                    
                     long tiempo = auxiliar(posibleSolucion,mazos,i+1,solucion);  
                     if (tiempo != -1) {
                         return tiempo;                        
